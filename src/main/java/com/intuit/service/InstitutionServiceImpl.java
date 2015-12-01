@@ -1,15 +1,14 @@
 package com.intuit.service;
 
-import java.util.List;
+import com.intuit.entity.Institution;
+import com.intuit.repository.InstitutionRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.intuit.entity.Institution;
-import com.intuit.repository.InstitutionRepository;
+import java.util.List;
 
-//@Service
-@Component
+@Component("dbService")
 public class InstitutionServiceImpl implements InstitutionService {
 
 	@Autowired

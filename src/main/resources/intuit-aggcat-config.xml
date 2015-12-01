@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<intuit-config>
+	<saml>
+<!-- 		<keystoreFile>/home/ubuntu/Intuit.certs/keystore.jks</keystoreFile> -->
+		<keystoreFile>/home/pdiaz/intuit/trizicapp.certs/keystore.jks</keystoreFile>
+		<keystorePassword>trizpass</keystorePassword>
+		<keyPassword>trizpass</keyPassword>
+		<certAlias>trizicapp</certAlias>
+	</saml>
+</intuit-config>
