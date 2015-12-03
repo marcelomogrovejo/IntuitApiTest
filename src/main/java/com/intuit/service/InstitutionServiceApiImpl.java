@@ -5,6 +5,7 @@ import com.intuit.ipp.aggcat.data.InstitutionDetail;
 import com.intuit.ipp.aggcat.data.Institutions;
 import com.intuit.ipp.aggcat.exception.AggCatException;
 import com.intuit.ipp.aggcat.service.AggCatService;
+import com.intuit.repository.InstitutionRepository;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,6 +22,9 @@ public class InstitutionServiceApiImpl implements InstitutionService {
     @Autowired
     AggCatApiService aggCatApiService;
     
+    @Autowired
+    InstitutionRepository institutionRepository;
+    
     private static final Logger LOG = LoggerFactory.getLogger(InstitutionServiceImpl.class);
     
     @Override
@@ -33,7 +37,10 @@ public class InstitutionServiceApiImpl implements InstitutionService {
             InstitutionDetail institutionDetail = aggCatService.getInstitutionDetails(id);
             
             result.setId(institutionDetail.getInstitutionId());
-            result.setName(institutionDetail.getInstitutionName());                                   
+            result.setInstitutionName(institutionDetail.getInstitutionName());
+            
+            institutionRepository.save(result);
+            
         } catch (AggCatException ex) {
             LOG.error(ex.getMessage());
             throw new RuntimeException("Exception while generating OAuth tokens. Please check whether the configured keys and cert files are valid.",
@@ -62,10 +69,9 @@ public class InstitutionServiceApiImpl implements InstitutionService {
         for(com.intuit.ipp.aggcat.data.Institution i: institutions) {
             Institution inst = new Institution();
             inst.setId(i.getInstitutionId());
-            inst.setName(i.getInstitutionName());
+            inst.setInstitutionName(i.getInstitutionName());
             institutionsResult.add(inst);
         }
-        
         
         return institutionsResult;
     }

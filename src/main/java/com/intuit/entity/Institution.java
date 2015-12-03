@@ -1,14 +1,12 @@
 package com.intuit.entity;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
-
-import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Entity
 @Table(name = "INSTITUTION")
@@ -16,29 +14,66 @@ public class Institution {
 
 	@JsonProperty
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "ID", nullable = false)
+	@Column(name = "id", nullable = false)
 	private Long id;
 
 	@JsonProperty
 	@Size(min=10, max=50)
-	@Column(name = "NAME", nullable = false)
-	private String name;
+	@Column(name = "institutionName", nullable = true)
+	private String institutionName;
+	
+	@JsonProperty
+	@Size(min=10, max=50)
+	@Column(name = "homeUrl", nullable = true)
+	private String homeUrl;
+	
+	@JsonProperty
+	@Size(min=10, max=50)
+	@Column(name = "phoneNumber", nullable = true)
+	private String phoneNumber;
+	
+	@JsonProperty
+	@Column(name = "virtual", nullable = true)
+	private boolean virtual;
 
-	public Long getId() {
-		return id;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public String getName() {
-		return name;
-	}
+    public String getInstitutionName() {
+        return institutionName;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public void setInstitutionName(String institutionName) {
+        this.institutionName = institutionName;
+    }
+
+    public String getHomeUrl() {
+        return homeUrl;
+    }
+
+    public void setHomeUrl(String homeUrl) {
+        this.homeUrl = homeUrl;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public boolean isVirtual() {
+        return virtual;
+    }
+
+    public void setVirtual(boolean virtual) {
+        this.virtual = virtual;
+    }
 
 }
