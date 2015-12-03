@@ -4,7 +4,6 @@ import com.intuit.ipp.aggcat.data.Account;
 import com.intuit.ipp.aggcat.data.AccountList;
 import com.intuit.ipp.aggcat.data.InvestmentPosition;
 import com.intuit.ipp.aggcat.data.InvestmentPositions;
-import com.intuit.ipp.aggcat.data.TransactionList;
 import com.intuit.ipp.aggcat.exception.AggCatException;
 import com.intuit.ipp.aggcat.service.AggCatService;
 import com.intuit.repository.AccountRepository;
@@ -57,7 +56,29 @@ public class AccountServiceApiImpl implements AccountService {
             for (Account a : accountList) {
                 if(accountNumber.equals(a.getAccountNumber())) {
                     account = a;
-                    
+                }
+            }
+
+        } catch (AggCatException ex) {
+            LOG.error(ex.getMessage());
+            throw new RuntimeException("Exception while generating OAuth tokens. Please check whether the configured keys and cert files are valid.",
+                    ex);
+        }
+        
+        return account;
+    }
+
+
+    @Override
+    public boolean addOne(Long id) {
+        
+        try {
+            AggCatService aggCatService = aggCatApiService.getAggCatService();
+            AccountList accounts = aggCatService.getCustomerAccounts();
+            List<Account> accountList = accounts.getBankingAccountsAndCreditAccountsAndLoanAccounts();
+
+            for (Account a : accountList) {
+                if(id.equals(a.getAccountId())) {
                     com.intuit.entity.Account newAccount = new com.intuit.entity.Account();
                     newAccount.setId(a.getAccountId());
                     newAccount.setAccountNumber(a.getAccountNumber());
@@ -73,27 +94,42 @@ public class AccountServiceApiImpl implements AccountService {
             throw new RuntimeException("Exception while generating OAuth tokens. Please check whether the configured keys and cert files are valid.",
                     ex);
         }
-        
-        return account;
-    }
 
-    public TransactionList listTransaction(Long accountId, String txnStartDate, String txnEndDate) {
-        
-        TransactionList transactions;
-        
-        try {
-            AggCatService aggCatService = aggCatApiService.getAggCatService();
-            transactions = aggCatService.getAccountTransactions(accountId, txnStartDate, txnEndDate);
-            
-
-        } catch (AggCatException ex) {
-            LOG.error(ex.getMessage());
-            throw new RuntimeException("Exception while generating OAuth tokens. Please check whether the configured keys and cert files are valid.",
-                    ex);
-        }
-        
-        return transactions;
+        return true;
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    //
+//    public TransactionList listTransaction(Long accountId, String txnStartDate, String txnEndDate) {
+//        
+//        TransactionList transactions;
+//        
+//        try {
+//            AggCatService aggCatService = aggCatApiService.getAggCatService();
+//            transactions = aggCatService.getAccountTransactions(accountId, txnStartDate, txnEndDate);
+//            
+//
+//        } catch (AggCatException ex) {
+//            LOG.error(ex.getMessage());
+//            throw new RuntimeException("Exception while generating OAuth tokens. Please check whether the configured keys and cert files are valid.",
+//                    ex);
+//        }
+//        
+//        return transactions;
+//    }
     
     public List<InvestmentPosition> listAccountPositions(Long accountId) {
         

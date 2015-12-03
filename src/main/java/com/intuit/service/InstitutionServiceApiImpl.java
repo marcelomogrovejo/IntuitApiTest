@@ -39,8 +39,6 @@ public class InstitutionServiceApiImpl implements InstitutionService {
             result.setId(institutionDetail.getInstitutionId());
             result.setInstitutionName(institutionDetail.getInstitutionName());
             
-            institutionRepository.save(result);
-            
         } catch (AggCatException ex) {
             LOG.error(ex.getMessage());
             throw new RuntimeException("Exception while generating OAuth tokens. Please check whether the configured keys and cert files are valid.",
@@ -74,6 +72,32 @@ public class InstitutionServiceApiImpl implements InstitutionService {
         }
         
         return institutionsResult;
+    }
+
+    @Override
+    public boolean addOne(Long id) {
+
+        Institution result = new Institution();
+        
+        try {
+            AggCatService aggCatService = aggCatApiService.getAggCatService();
+            InstitutionDetail institutionDetail = aggCatService.getInstitutionDetails(id);
+            
+            result.setId(institutionDetail.getInstitutionId());
+            result.setInstitutionName(institutionDetail.getInstitutionName());
+            result.setHomeUrl(institutionDetail.getEmailAddress());
+            result.setPhoneNumber(institutionDetail.getPhoneNumber());
+            
+            institutionRepository.save(result);
+            
+        } catch (AggCatException ex) {
+            LOG.error(ex.getMessage());
+            throw new RuntimeException("Exception while generating OAuth tokens. Please check whether the configured keys and cert files are valid.",
+                    ex);
+        }
+        
+        return true;
+
     }
 
 }

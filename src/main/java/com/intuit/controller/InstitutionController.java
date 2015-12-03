@@ -15,13 +15,17 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/institution")
+@RequestMapping("/api/institution")
 public class InstitutionController {
 
     @Autowired
     @Qualifier("apiService")
     InstitutionService institutionServiceApiImpl;
 
+    @Autowired
+    @Qualifier("dbService")
+    InstitutionService institutionServiceImpl;
+    
     @RequestMapping(value = "/list", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody List<Institution> listInstitutionsFromAPI() {
         return institutionServiceApiImpl.findAllInstitution();
@@ -32,9 +36,10 @@ public class InstitutionController {
     public @ResponseBody String addInstitutionFromAPI(@PathVariable String institutionId) {
         
         String result = "Failure";
-        
-        
-        
+
+        if(institutionServiceApiImpl.addOne(Long.parseLong(institutionId))) {
+            result = "Success";
+        }
         
         return result;
     }

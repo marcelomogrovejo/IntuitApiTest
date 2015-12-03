@@ -22,4 +22,9 @@ public class InstitutionServiceImpl implements InstitutionService {
 		return repository.findAll();
 	}
 
+    @Override
+    public boolean addOne(Long id) {
+        return false;
+    }
+
 }

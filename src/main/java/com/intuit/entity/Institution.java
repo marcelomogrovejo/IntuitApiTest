@@ -32,10 +32,6 @@ public class Institution {
 	@Column(name = "phoneNumber", nullable = true)
 	private String phoneNumber;
 	
-	@JsonProperty
-	@Column(name = "virtual", nullable = true)
-	private boolean virtual;
-
     public Long getId() {
         return id;
     }
@@ -66,14 +62,6 @@ public class Institution {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
-    }
-
-    public boolean isVirtual() {
-        return virtual;
-    }
-
-    public void setVirtual(boolean virtual) {
-        this.virtual = virtual;
     }
 
 }

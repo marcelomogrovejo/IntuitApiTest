@@ -10,4 +10,5 @@ public interface InstitutionService {
 	
 	List<Institution> findAllInstitution();
 	
+	boolean addOne(Long id);
 }
