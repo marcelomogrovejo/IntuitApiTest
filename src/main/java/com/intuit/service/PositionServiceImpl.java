@@ -1,6 +1,7 @@
 package com.intuit.service;
 
-import com.intuit.ipp.aggcat.data.TransactionList;
+import com.intuit.ipp.aggcat.data.InvestmentPosition;
+import com.intuit.ipp.aggcat.data.InvestmentPositions;
 import com.intuit.ipp.aggcat.exception.AggCatException;
 import com.intuit.ipp.aggcat.service.AggCatService;
 
@@ -9,22 +10,24 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-@Component
-public class TransactionServiceImpl implements TransactionService {
+import java.util.List;
 
-    private static final Logger LOG = LoggerFactory.getLogger(AccountServiceApiImpl.class);
+@Component
+public class PositionServiceImpl implements PositionService {
+
+    private static final Logger LOG = LoggerFactory.getLogger(PositionServiceImpl.class);
     
     @Autowired
     private AggCatApiService aggCatApiService;
     
-    public TransactionList listTransaction(Long accountId, String txnStartDate, String txnEndDate) {
+    public List<InvestmentPosition> listAccountPositions(Long accountId) {
         
-        TransactionList transactions;
+        List<InvestmentPosition> positionList;
         
         try {
             AggCatService aggCatService = aggCatApiService.getAggCatService();
-            transactions = aggCatService.getAccountTransactions(accountId, txnStartDate, txnEndDate);
-            
+            InvestmentPositions positions = aggCatService.getInvestmentPositions(accountId);
+            positionList = positions.getPositions();
 
         } catch (AggCatException ex) {
             LOG.error(ex.getMessage());
@@ -32,7 +35,8 @@ public class TransactionServiceImpl implements TransactionService {
                     ex);
         }
         
-        return transactions;
+        return positionList;
     }
+
     
 }

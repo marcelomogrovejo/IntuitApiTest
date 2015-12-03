@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class TransactionController {
 
     @Autowired
-    TransactionService transactionService;
+    private TransactionService transactionService;
     
     @RequestMapping(value = "/find/{accountId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody TransactionList getTransactionFromAPI(@PathVariable String accountId) {

@@ -15,15 +15,14 @@ import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 import java.util.List;
 
-
 @Component("apiService")
 public class InstitutionServiceApiImpl implements InstitutionService {
 
     @Autowired
-    AggCatApiService aggCatApiService;
+    private AggCatApiService aggCatApiService;
     
     @Autowired
-    InstitutionRepository institutionRepository;
+    private InstitutionRepository institutionRepository;
     
     private static final Logger LOG = LoggerFactory.getLogger(InstitutionServiceImpl.class);
     

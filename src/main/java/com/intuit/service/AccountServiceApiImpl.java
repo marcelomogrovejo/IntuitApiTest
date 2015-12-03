@@ -2,8 +2,6 @@ package com.intuit.service;
 
 import com.intuit.ipp.aggcat.data.Account;
 import com.intuit.ipp.aggcat.data.AccountList;
-import com.intuit.ipp.aggcat.data.InvestmentPosition;
-import com.intuit.ipp.aggcat.data.InvestmentPositions;
 import com.intuit.ipp.aggcat.exception.AggCatException;
 import com.intuit.ipp.aggcat.service.AggCatService;
 import com.intuit.repository.AccountRepository;
@@ -21,10 +19,10 @@ public class AccountServiceApiImpl implements AccountService {
     private static final Logger LOG = LoggerFactory.getLogger(AccountServiceApiImpl.class);
     
     @Autowired
-    AggCatApiService aggCatApiService;
+    private AggCatApiService aggCatApiService;
     
     @Autowired
-    AccountRepository accountRepository;
+    private AccountRepository accountRepository;
 
     public List<Account> getAccounts() {
         
@@ -97,56 +95,5 @@ public class AccountServiceApiImpl implements AccountService {
 
         return true;
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    //
-//    public TransactionList listTransaction(Long accountId, String txnStartDate, String txnEndDate) {
-//        
-//        TransactionList transactions;
-//        
-//        try {
-//            AggCatService aggCatService = aggCatApiService.getAggCatService();
-//            transactions = aggCatService.getAccountTransactions(accountId, txnStartDate, txnEndDate);
-//            
-//
-//        } catch (AggCatException ex) {
-//            LOG.error(ex.getMessage());
-//            throw new RuntimeException("Exception while generating OAuth tokens. Please check whether the configured keys and cert files are valid.",
-//                    ex);
-//        }
-//        
-//        return transactions;
-//    }
-    
-    public List<InvestmentPosition> listAccountPositions(Long accountId) {
-        
-        List<InvestmentPosition> positionList;
-        
-        try {
-            AggCatService aggCatService = aggCatApiService.getAggCatService();
-            InvestmentPositions positions = aggCatService.getInvestmentPositions(accountId);
-            positionList = positions.getPositions();
 
-        } catch (AggCatException ex) {
-            LOG.error(ex.getMessage());
-            throw new RuntimeException("Exception while generating OAuth tokens. Please check whether the configured keys and cert files are valid.",
-                    ex);
-        }
-        
-        return positionList;
-    }
-    
 }

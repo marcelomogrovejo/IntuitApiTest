@@ -18,7 +18,7 @@ import java.util.List;
 public class AccountController {
 
     @Autowired
-    AccountService accountService;
+    private AccountService accountService;
     
     @RequestMapping(value = "/list", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody List<Account> listAccountFromAPI() {

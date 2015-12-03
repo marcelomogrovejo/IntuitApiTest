@@ -20,11 +20,11 @@ public class InstitutionController {
 
     @Autowired
     @Qualifier("apiService")
-    InstitutionService institutionServiceApiImpl;
+    private InstitutionService institutionServiceApiImpl;
 
     @Autowired
     @Qualifier("dbService")
-    InstitutionService institutionServiceImpl;
+    private InstitutionService institutionServiceImpl;
     
     @RequestMapping(value = "/list", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody List<Institution> listInstitutionsFromAPI() {
