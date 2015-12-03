@@ -2,16 +2,11 @@ package com.intuit.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "INVESTMENT_BANKING_TRANSACTION")
 public class InvestmentBankingTransaction extends Transaction {
-
-    @Id
-    @Column(name = "id", nullable = false)
-    private Long id;
     
     @Column(name = "bankingTransactionType", nullable = true)
     private String bankingTransactionType;
@@ -21,14 +16,6 @@ public class InvestmentBankingTransaction extends Transaction {
     
     @Column(name = "banking401KSourceType", nullable = true)
     private String banking401KSourceType;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getBankingTransactionType() {
         return bankingTransactionType;

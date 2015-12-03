@@ -4,16 +4,11 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "INVESTMENT_TRANSACTION")
 public class InvestmentTransaction extends Transaction {
-
-    @Id
-    @Column(name = "id", nullable = false)
-    private Long id;
 
     @Column(name = "reversalInstitutionTransactionId", nullable = true)
     private String reversalInstitutionTransactionId;
@@ -197,14 +192,6 @@ public class InvestmentTransaction extends Transaction {
     
     @Column(name = "debtInfo", nullable = true)
     private String debtInfo;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getReversalInstitutionTransactionId() {
         return reversalInstitutionTransactionId;

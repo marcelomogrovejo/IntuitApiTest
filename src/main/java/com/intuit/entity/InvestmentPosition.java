@@ -10,11 +10,11 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "INVESTMENT_POSITION")
 public class InvestmentPosition {
-
+    
     @Id
     @Column(name = "id", nullable = false)
     private Long id;
-    
+
     @Column(name = "changePercent", nullable = true)
     private Long changePercent;
     
@@ -127,7 +127,7 @@ public class InvestmentPosition {
     public void setId(Long id) {
         this.id = id;
     }
-
+    
     public Long getChangePercent() {
         return changePercent;
     }

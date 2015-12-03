@@ -2,16 +2,11 @@ package com.intuit.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "LOAN_TRANSACTION")
 public class LoanTransaction extends Transaction {
-    
-    @Id
-    @Column(name = "id", nullable = false)
-    private Long id;
 
     @Column(name = "principalAmount", nullable = true)
     private Long principalAmount;
@@ -36,14 +31,6 @@ public class LoanTransaction extends Transaction {
     
     @Column(name = "escrowOtherAmount", nullable = true)
     private Long escrowOtherAmount;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public Long getPrincipalAmount() {
         return principalAmount;

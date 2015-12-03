@@ -38,16 +38,16 @@ public class AppController {
 		return institutionServiceImpl.findAllInstitution();
 	}
 	
-	@RequestMapping(value = "/institution", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public @ResponseBody List<Institution> listInstitutionsFromAPI() {
-        return institutionServiceApiImpl.findAllInstitution();
-    }
-	
-	@RequestMapping(value = "/institution/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public @ResponseBody Institution getInstitutionFromAPI(@PathVariable String id) {
-        return institutionServiceApiImpl.findById(Long.parseLong(id));
-        //100000
-    }
+//	@RequestMapping(value = "/institution", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+//    public @ResponseBody List<Institution> listInstitutionsFromAPI() {
+//        return institutionServiceApiImpl.findAllInstitution();
+//    }
+//	
+//	@RequestMapping(value = "/institution/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+//    public @ResponseBody Institution getInstitutionFromAPI(@PathVariable String id) {
+//        return institutionServiceApiImpl.findById(Long.parseLong(id));
+//        //100000
+//    }
 	
     @RequestMapping(value = "/account", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody List<Account> listAccountFromAPI() {
