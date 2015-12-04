@@ -24,14 +24,14 @@ public class TransactionController {
         //400165094462
     }
     
-//    @RequestMapping(value = "/add/{accountId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-//    public @ResponseBody String addTransactionFromAPI(@PathVariable String accountId) {
-//        String result = "Failure";
-//        if(transactionService.addOne(Long.parseLong(accountId))) {
-//            result = "Success";
-//        }
-//        return result;
-//        //400165094462
-//    }
+    @RequestMapping(value = "/add/{accountId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public @ResponseBody String addTransactionFromAPI(@PathVariable String accountId) {
+        String result = "Failure";
+        if(transactionService.addOne(Long.parseLong(accountId), "2013-01-01", "2015-01-01")) {
+            result = "Success";
+        }
+        return result;
+        //400165094462
+    }
 
 }

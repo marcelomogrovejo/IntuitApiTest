@@ -1,6 +1,6 @@
 package com.intuit.service;
 
-import com.intuit.entity.Institution;
+import com.intuit.entity.InstitutionVO;
 import com.intuit.ipp.aggcat.data.InstitutionDetail;
 import com.intuit.ipp.aggcat.data.Institutions;
 import com.intuit.ipp.aggcat.exception.AggCatException;
@@ -18,18 +18,18 @@ import java.util.List;
 @Component("apiService")
 public class InstitutionServiceApiImpl implements InstitutionService {
 
+    private static final Logger LOG = LoggerFactory.getLogger(InstitutionServiceImpl.class);
+    
     @Autowired
     private AggCatApiService aggCatApiService;
     
     @Autowired
     private InstitutionRepository institutionRepository;
     
-    private static final Logger LOG = LoggerFactory.getLogger(InstitutionServiceImpl.class);
-    
     @Override
-    public Institution findById(Long id) {
+    public InstitutionVO findById(Long id) {
         
-        Institution result = new Institution();
+        InstitutionVO result = new InstitutionVO();
         
         try {
             AggCatService aggCatService = aggCatApiService.getAggCatService();
@@ -48,10 +48,10 @@ public class InstitutionServiceApiImpl implements InstitutionService {
     }
 
     @Override
-    public List<Institution> findAllInstitution() {
+    public List<InstitutionVO> findAllInstitution() {
         
         List<com.intuit.ipp.aggcat.data.Institution> institutions;
-        List<Institution> institutionsResult = new ArrayList<>();
+        List<InstitutionVO> institutionsResult = new ArrayList<>();
         
         try {
             AggCatService aggCatService = aggCatApiService.getAggCatService();
@@ -64,7 +64,7 @@ public class InstitutionServiceApiImpl implements InstitutionService {
         }
         
         for(com.intuit.ipp.aggcat.data.Institution i: institutions) {
-            Institution inst = new Institution();
+            InstitutionVO inst = new InstitutionVO();
             inst.setId(i.getInstitutionId());
             inst.setInstitutionName(i.getInstitutionName());
             institutionsResult.add(inst);
@@ -76,7 +76,7 @@ public class InstitutionServiceApiImpl implements InstitutionService {
     @Override
     public boolean addOne(Long id) {
 
-        Institution result = new Institution();
+        InstitutionVO result = new InstitutionVO();
         
         try {
             AggCatService aggCatService = aggCatApiService.getAggCatService();

@@ -1,5 +1,8 @@
 package com.intuit.entity;
 
+import com.intuit.ipp.aggcat.data.CurrencyCode;
+
+import java.math.BigDecimal;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -12,14 +15,14 @@ import javax.persistence.Table;
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 @Table(name = "TRANSACTION")
-public class Transaction {
+public class TransactionVO {
 
     @Id
     @Column(name = "id", nullable = false)
     private Long id;
     
     @Column(name = "currencyType", nullable = true)
-    private String currencyType;
+    private CurrencyCode currencyType;
     
     @Column(name = "institutionTransactionId", nullable = true)
     private String institutionTransactionId;
@@ -73,7 +76,7 @@ public class Transaction {
     private Date availableDate;
     
     @Column(name = "amount", nullable = true)
-    private Long amount;
+    private BigDecimal amount;
     
     @Column(name = "runningBalanceAmount", nullable = true)
     private Long runningBalanceAmount;
@@ -92,11 +95,11 @@ public class Transaction {
         this.id = id;
     }
 
-    public String getCurrencyType() {
+    public CurrencyCode getCurrencyType() {
         return currencyType;
     }
 
-    public void setCurrencyType(String currencyType) {
+    public void setCurrencyType(CurrencyCode currencyType) {
         this.currencyType = currencyType;
     }
 
@@ -236,11 +239,11 @@ public class Transaction {
         this.availableDate = availableDate;
     }
 
-    public Long getAmount() {
+    public BigDecimal getAmount() {
         return amount;
     }
 
-    public void setAmount(Long amount) {
+    public void setAmount(BigDecimal amount) {
         this.amount = amount;
     }
 

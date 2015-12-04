@@ -1,6 +1,6 @@
 package com.intuit.service;
 
-import com.intuit.entity.Institution;
+import com.intuit.entity.InstitutionVO;
 import com.intuit.repository.InstitutionRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,11 +14,11 @@ public class InstitutionServiceImpl implements InstitutionService {
 	@Autowired
 	private InstitutionRepository repository;
 
-	public Institution findById(Long id) {
+	public InstitutionVO findById(Long id) {
 		return repository.findOne(id);
 	}
 
-	public List<Institution> findAllInstitution() {
+	public List<InstitutionVO> findAllInstitution() {
 		return repository.findAll();
 	}
 

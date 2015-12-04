@@ -5,6 +5,6 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "REWARDS_TRANSACTION")
-public class RewardsTransaction extends Transaction {
+public class RewardsTransactionVO extends TransactionVO {
 
 }

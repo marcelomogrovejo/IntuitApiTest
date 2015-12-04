@@ -19,7 +19,7 @@ public class AccountController {
 
     @Autowired
     private AccountService accountService;
-    
+
     @RequestMapping(value = "/list", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody List<Account> listAccountFromAPI() {
         return accountService.getAccounts();
@@ -40,5 +40,10 @@ public class AccountController {
         return result;
         //400165094462
     }
+
+//    @RequestMapping(value = "/db-account", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+//    public @ResponseBody List<AccountVO> listAccounts() {
+//        return accountService.findAll();
+//    }
 
 }

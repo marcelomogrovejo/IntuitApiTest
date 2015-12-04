@@ -6,7 +6,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "LOAN_TRANSACTION")
-public class LoanTransaction extends Transaction {
+public class LoanTransactionVO extends TransactionVO {
 
     @Column(name = "principalAmount", nullable = true)
     private Long principalAmount;

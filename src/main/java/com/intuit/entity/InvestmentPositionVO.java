@@ -1,5 +1,8 @@
 package com.intuit.entity;
 
+import com.intuit.ipp.aggcat.data.InvSecurityType;
+
+import java.math.BigDecimal;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -9,17 +12,17 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "INVESTMENT_POSITION")
-public class InvestmentPosition {
+public class InvestmentPositionVO {
     
     @Id
     @Column(name = "id", nullable = false)
     private Long id;
 
     @Column(name = "changePercent", nullable = true)
-    private Long changePercent;
+    private BigDecimal changePercent;
     
     @Column(name = "costBasis", nullable = true)
-    private Long costBasis;
+    private BigDecimal costBasis;
     
     @Column(name = "currencyCode", nullable = true)
     private String currencyCode;
@@ -31,7 +34,7 @@ public class InvestmentPosition {
     private String currencyType;
     
     @Column(name = "unitPrice", nullable = true)
-    private Long unitPrice;
+    private BigDecimal unitPrice;
     
     @Column(name = "priceAsOfDate", nullable = true)
     private Date priceAsOfDate;
@@ -67,13 +70,13 @@ public class InvestmentPosition {
     private Long paidPrice;
     
     @Column(name = "marketValue", nullable = true)
-    private Long marketValue;
+    private BigDecimal marketValue;
     
     @Column(name = "maturityValue", nullable = true)
     private Long maturityValue;
     
     @Column(name = "units", nullable = true)
-    private Long units;
+    private BigDecimal units;
     
     @Column(name = "unitUserQuantity", nullable = true)
     private Long unitUserQuantity;
@@ -103,7 +106,7 @@ public class InvestmentPosition {
     private String transactionType;
     
     @Column(name = "invSecurityType", nullable = true)
-    private String invSecurityType;
+    private InvSecurityType invSecurityType;
     
     @Column(name = "otherInfo", nullable = true)
     private String otherInfo;
@@ -128,19 +131,19 @@ public class InvestmentPosition {
         this.id = id;
     }
     
-    public Long getChangePercent() {
+    public BigDecimal getChangePercent() {
         return changePercent;
     }
 
-    public void setChangePercent(Long changePercent) {
+    public void setChangePercent(BigDecimal changePercent) {
         this.changePercent = changePercent;
     }
 
-    public Long getCostBasis() {
+    public BigDecimal getCostBasis() {
         return costBasis;
     }
 
-    public void setCostBasis(Long costBasis) {
+    public void setCostBasis(BigDecimal costBasis) {
         this.costBasis = costBasis;
     }
 
@@ -168,11 +171,11 @@ public class InvestmentPosition {
         this.currencyType = currencyType;
     }
 
-    public Long getUnitPrice() {
+    public BigDecimal getUnitPrice() {
         return unitPrice;
     }
 
-    public void setUnitPrice(Long unitPrice) {
+    public void setUnitPrice(BigDecimal unitPrice) {
         this.unitPrice = unitPrice;
     }
 
@@ -264,11 +267,11 @@ public class InvestmentPosition {
         this.paidPrice = paidPrice;
     }
 
-    public Long getMarketValue() {
+    public BigDecimal getMarketValue() {
         return marketValue;
     }
 
-    public void setMarketValue(Long marketValue) {
+    public void setMarketValue(BigDecimal marketValue) {
         this.marketValue = marketValue;
     }
 
@@ -280,11 +283,11 @@ public class InvestmentPosition {
         this.maturityValue = maturityValue;
     }
 
-    public Long getUnits() {
+    public BigDecimal getUnits() {
         return units;
     }
 
-    public void setUnits(Long units) {
+    public void setUnits(BigDecimal units) {
         this.units = units;
     }
 
@@ -360,11 +363,11 @@ public class InvestmentPosition {
         this.transactionType = transactionType;
     }
 
-    public String getInvSecurityType() {
+    public InvSecurityType getInvSecurityType() {
         return invSecurityType;
     }
 
-    public void setInvSecurityType(String invSecurityType) {
+    public void setInvSecurityType(InvSecurityType invSecurityType) {
         this.invSecurityType = invSecurityType;
     }
 

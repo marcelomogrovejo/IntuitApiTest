@@ -7,7 +7,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "ACCOUNT")
-public class Account {
+public class AccountVO {
 
 	@Id
 	@Column(name = "id", nullable = false)

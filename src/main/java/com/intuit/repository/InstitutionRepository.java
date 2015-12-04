@@ -2,8 +2,8 @@ package com.intuit.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.intuit.entity.Institution;
+import com.intuit.entity.InstitutionVO;
 
-public interface InstitutionRepository extends JpaRepository<Institution, Long> {
+public interface InstitutionRepository extends JpaRepository<InstitutionVO, Long> {
 
 }

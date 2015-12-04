@@ -2,13 +2,13 @@ package com.intuit.service;
 
 import java.util.List;
 
-import com.intuit.entity.Institution;
+import com.intuit.entity.InstitutionVO;
 
 public interface InstitutionService {
 
-	Institution findById(Long id);
+	InstitutionVO findById(Long id);
 	
-	List<Institution> findAllInstitution();
+	List<InstitutionVO> findAllInstitution();
 	
 	boolean addOne(Long id);
 }

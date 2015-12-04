@@ -23,7 +23,17 @@ public class PositionController {
     @RequestMapping(value = "/list/{accountId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody List<InvestmentPosition> listAccountPositionsFromAPI(@PathVariable String accountId) {
         return positionService.listAccountPositions(Long.parseLong(accountId));
-        //400165094462
+        //400165094463
+    }
+    
+    @RequestMapping(value = "/add/{accountId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public @ResponseBody String addPositionFromAPI(@PathVariable String accountId) {
+        String result = "Failure";
+        if(positionService.addOne(Long.parseLong(accountId))) {
+            result = "Success";
+        }
+        return result;
+        //400165094463
     }
 
 }

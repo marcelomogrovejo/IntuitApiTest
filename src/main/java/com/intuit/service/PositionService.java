@@ -7,5 +7,7 @@ import java.util.List;
 public interface PositionService {
 
     List<InvestmentPosition> listAccountPositions(Long accountId);
+
+    boolean addOne(Long id);
     
 }

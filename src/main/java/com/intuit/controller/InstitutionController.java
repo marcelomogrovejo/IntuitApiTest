@@ -1,6 +1,6 @@
 package com.intuit.controller;
 
-import com.intuit.entity.Institution;
+import com.intuit.entity.InstitutionVO;
 import com.intuit.service.InstitutionService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +27,7 @@ public class InstitutionController {
     private InstitutionService institutionServiceImpl;
     
     @RequestMapping(value = "/list", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public @ResponseBody List<Institution> listInstitutionsFromAPI() {
+    public @ResponseBody List<InstitutionVO> listInstitutionsFromAPI() {
         return institutionServiceApiImpl.findAllInstitution();
         // 100000
     }
@@ -43,4 +43,10 @@ public class InstitutionController {
         
         return result;
     }
+    
+    @RequestMapping(value = "/db-institution", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public @ResponseBody List<InstitutionVO> listInstitutions() {
+        return institutionServiceImpl.findAllInstitution();
+    }
+    
 }

@@ -1,5 +1,6 @@
 package com.intuit.service;
 
+import com.intuit.entity.AccountVO;
 import com.intuit.ipp.aggcat.data.Account;
 import com.intuit.ipp.aggcat.data.AccountList;
 import com.intuit.ipp.aggcat.exception.AggCatException;
@@ -15,7 +16,6 @@ import java.util.List;
 
 @Component
 public class AccountServiceApiImpl implements AccountService {
-
     private static final Logger LOG = LoggerFactory.getLogger(AccountServiceApiImpl.class);
     
     @Autowired
@@ -72,12 +72,11 @@ public class AccountServiceApiImpl implements AccountService {
         
         try {
             AggCatService aggCatService = aggCatApiService.getAggCatService();
-            AccountList accounts = aggCatService.getCustomerAccounts();
-            List<Account> accountList = accounts.getBankingAccountsAndCreditAccountsAndLoanAccounts();
+            List<Account> accounts = aggCatService.getCustomerAccounts().getBankingAccountsAndCreditAccountsAndLoanAccounts();
 
-            for (Account a : accountList) {
+            for (Account a : accounts) {
                 if(id.equals(a.getAccountId())) {
-                    com.intuit.entity.Account newAccount = new com.intuit.entity.Account();
+                    com.intuit.entity.AccountVO newAccount = new com.intuit.entity.AccountVO();
                     newAccount.setId(a.getAccountId());
                     newAccount.setAccountNumber(a.getAccountNumber());
                     newAccount.setInstitutionId(a.getInstitutionId());
@@ -94,6 +93,12 @@ public class AccountServiceApiImpl implements AccountService {
         }
 
         return true;
+    }
+
+    @Override
+    public List<AccountVO> findAllAccounts() {
+        // TODO Auto-generated method stub
+        return null;
     }
 
 }

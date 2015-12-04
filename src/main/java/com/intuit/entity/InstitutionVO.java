@@ -10,7 +10,7 @@ import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "INSTITUTION")
-public class Institution {
+public class InstitutionVO {
 
 	@JsonProperty
 	@Id

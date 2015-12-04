@@ -8,7 +8,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "INVESTMENT_TRANSACTION")
-public class InvestmentTransaction extends Transaction {
+public class InvestmentTransactionVO extends TransactionVO {
 
     @Column(name = "reversalInstitutionTransactionId", nullable = true)
     private String reversalInstitutionTransactionId;
